@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git@gitee.com:wolf_dpf/tukuok.git"
   },
-  "author": "",
+  "author": "wolf_dpf",
   "license": "GNU",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "electron": "^34.1.0"
+  }
 }
