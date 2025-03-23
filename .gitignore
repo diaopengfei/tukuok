@@ -1,4 +1,7 @@
-./node_modules
-./thumbnails
-./config.json
-./tags.json
+node_modules
+build
+dist
+out
+.DS_Store
+.eslintcache
+*.log*
