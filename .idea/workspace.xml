@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87cedbf9-78f1-4ba3-b479-8b343fdc22c5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/renderer.js" beforeDir="false" />
+    <list default="true" id="87cedbf9-78f1-4ba3-b479-8b343fdc22c5" name="Changes" comment="调整项目结构，重构项目">
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/home/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/myInfo/MyInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/routers/appRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/assets/electron.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/Versions.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -39,36 +47,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/work/gitee/tsStudy&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Code Search&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\work\\gitee\\tukuok\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/work/gitee/tsStudy",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build:win.executor": "Run",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "D:\\work\\gitee\\tukuok\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\work\\gitee\\tukuok\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\work\gitee\tukuok\src\renderer\src\components\myInfo" />
+      <recent name="D:\work\gitee\tukuok\src\renderer\src\components\Home" />
       <recent name="D:\work\gitee\tukuok" />
       <recent name="D:\work\gitee\tukuok\src\renderer" />
       <recent name="D:\work\gitee\tukuok\src\main" />
-      <recent name="D:\work\gitee\tukuok\src\renderer\src" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="build:win" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="build" />
+        <script value="build:win" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -117,10 +133,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build:win" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.dist" />
         <item itemvalue="npm.package" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +178,19 @@
       <workItem from="1741419102373" duration="6000" />
       <workItem from="1741422180596" duration="1212000" />
       <workItem from="1741783670667" duration="104000" />
-      <workItem from="1742719230555" duration="2357000" />
+      <workItem from="1742719230555" duration="7266000" />
+      <workItem from="1744186817862" duration="6505000" />
+      <workItem from="1744292533268" duration="21000" />
+      <workItem from="1744870628418" duration="328000" />
+      <workItem from="1744942739027" duration="597000" />
+      <workItem from="1747379155225" duration="1330000" />
+      <workItem from="1747400774041" duration="10689000" />
+      <workItem from="1747470717740" duration="611000" />
+      <workItem from="1747478846368" duration="2515000" />
+      <workItem from="1747538375323" duration="86000" />
+      <workItem from="1747579462132" duration="1268000" />
+      <workItem from="1747580861538" duration="1045000" />
+      <workItem from="1747665079591" duration="3767000" />
     </task>
     <task id="LOCAL-00001" summary="初始化项目">
       <created>1738839690514</created>
@@ -206,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739102184284</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="调整项目结构，重构项目">
+      <option name="closed" value="true" />
+      <created>1742723714625</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742723714625</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +262,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="初始化项目" />
     <MESSAGE value="优化项目" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化项目" />
+    <MESSAGE value="调整项目结构，重构项目" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整项目结构，重构项目" />
   </component>
 </project>

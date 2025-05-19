@@ -1,12 +1,13 @@
-# my-app
+# tukuok
 
-An Electron application with Vue and TypeScript
+一个本地图库管理工具，寻找共同开发者。
 
-## Recommended IDE Setup
+## 功能规划
+- 本地图片打标签
+- 图库地图
+- 本地图库云盘同步
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
-
-## Project Setup
+## 项目准备
 
 ### Install
 

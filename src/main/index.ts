@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog  } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -49,8 +49,20 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  ipcMain.on('open-select-folder', async (event) => {
+    // 调用系统对话框选择文件夹（仅允许选择目录）
+    const result = await dialog.showOpenDialog({
+      properties: ['openDirectory'], // 关键配置：只允许选择文件夹
+      title: '请选择工作目录', // 对话框标题
+      buttonLabel: '确认选择' // 确认按钮文本
+    })
+
+    // 如果用户未取消选择且选择了文件夹
+    if (!result.canceled && result.filePaths.length > 0) {
+      // 向渲染进程发送选择的文件夹路径（通过 event.sender 定位到当前窗口的渲染进程）
+      event.sender.send('folder-selected', result.filePaths[0])
+    }
+  })
 
   createWindow()
 

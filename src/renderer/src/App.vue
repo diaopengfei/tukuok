@@ -1,26 +1,29 @@
 <template>
-  <div class="creator">Powered by electron-vite</div>
-  <div class="text">
-    Build an Electron app with
-    <span class="vue">Vue</span>
-    and
-    <span class="ts">TypeScript</span>
-  </div>
-  <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-  <div class="actions">
-    <div class="action">
-      <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
+  <div>
+    <div class="app-container">
+      <el-button type="primary" :loading-icon="Eleme"
+                 size="large" @click="openFolderSelect">点击选择工作目录</el-button>
     </div>
-    <div class="action">
-      <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
-    </div>
+    <router-view />
   </div>
-  <Versions />
 </template>
 
-
 <script setup lang="ts">
-import Versions from './components/Versions.vue'
-
-const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+import { Eleme } from '@element-plus/icons-vue'
+const openFolderSelect = (): void =>  {
+  window.electron.ipcRenderer.send('open-select-folder')
+  window.electron.ipcRenderer.once('folder-selected', (_, folderPath) => {
+    console.log('用户选择的文件夹路径：', folderPath)
+  })
+}
 </script>
+
+<style scoped>
+.app-container {
+  height: 100vh; /* 占满视口高度 */
+  display: flex;
+  flex-direction: column; /* 子元素垂直排列 */
+  align-items: center; /* 水平居中 */
+  justify-content: center; /* 垂直居中 */
+}
+</style>

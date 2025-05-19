@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "1.0.0",
+  "name": "tukuok",
+  "version": "0.0.1",
   "description": "An Electron application with Vue and TypeScript",
   "main": "./out/main/index.js",
   "author": "example.com",
@@ -24,7 +24,8 @@
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
     "electron-updater": "^6.3.9",
-    "element-plus": "^2.9.7"
+    "element-plus": "^2.9.7",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "3.0.0",
