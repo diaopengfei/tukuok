@@ -2,6 +2,7 @@ node_modules
 build
 dist
 out
+.idea
 .DS_Store
 .eslintcache
 *.log*
