@@ -2,6 +2,8 @@ import { app, shell, BrowserWindow, ipcMain, dialog  } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import fs from 'fs/promises'
+import path from 'path'
 
 function createWindow(): void {
   // Create the browser window.
@@ -35,16 +37,10 @@ function createWindow(): void {
   }
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
-  // Default open or close DevTools by F12 in development
-  // and ignore CommandOrControl + R in production.
-  // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
@@ -61,6 +57,33 @@ app.whenReady().then(() => {
     if (!result.canceled && result.filePaths.length > 0) {
       // 向渲染进程发送选择的文件夹路径（通过 event.sender 定位到当前窗口的渲染进程）
       event.sender.send('folder-selected', result.filePaths[0])
+    }
+  })
+
+  ipcMain.on('get-folder-content', async (event, folderPath) => {
+    try {
+      // 读取文件夹下的所有条目（文件和子文件夹）
+      const entries = await fs.readdir(folderPath, { withFileTypes: true })
+
+      // 分类整理：子文件夹、图片文件（根据扩展名筛选）
+      const folders = []
+      const images = []
+      const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'] // 支持的图片格式
+
+      for (const entry of entries) {
+        const fullPath = path.join(folderPath, entry.name)
+        if (entry.isDirectory()) {
+          folders.push({ name: entry.name, path: fullPath })
+        } else if (entry.isFile() && imageExtensions.includes(path.extname(entry.name).toLowerCase())) {
+          images.push({ name: entry.name, path: fullPath })
+        }
+      }
+
+      // 向渲染进程返回结果
+      event.sender.send('received-folder-content', { folders, images })
+    } catch (error) {
+      console.error('读取文件夹失败:', error)
+      event.sender.send('received-folder-content', { error: '读取文件夹失败' })
     }
   })
 

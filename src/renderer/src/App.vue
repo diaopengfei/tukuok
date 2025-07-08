@@ -1,11 +1,14 @@
 <template>
-  <div class="whole-app-container">
-    <div v-if="showSelectFolderBtn" class="select-folder-container">
-      <el-button type="primary" :loading-icon="Eleme" size="large" @click="openFolderSelect"
-        >点击选择工作目录</el-button
-      >
-    </div>
-    <router-view />
+  <div>
+    <el-container class="app-container">
+      <el-button type="primary"
+                 :loading-icon="Eleme"
+                 size="large"
+                 style="margin: auto;"
+                 v-if="showSelectFolderBtn"
+                 @click="openFolderSelect">点击选择工作目录</el-button>
+      <router-view />
+    </el-container>
   </div>
 </template>
 
@@ -16,26 +19,22 @@ import { useRouter } from 'vue-router'
 const showSelectFolderBtn = ref(true)
 const router = useRouter()
 
-const openFolderSelect = (): void =>  {
+const openFolderSelect = (): void => {
+  // 选择文件夹
   window.electron.ipcRenderer.send('open-select-folder')
   window.electron.ipcRenderer.once('folder-selected', (_, folderPath) => {
-    console.log('用户选择的文件夹路径：', folderPath);
     showSelectFolderBtn.value = false
     router.push({
-      name: 'Home',
+      name: 'home',
       query: { folderPath: folderPath }
-    });
-
+    })
   })
 }
 </script>
 
 <style scoped>
-.select-folder-container {
-  height: 100vh; /* 占满视口高度 */
-  display: flex;
-  flex-direction: column; /* 子元素垂直排列 */
-  align-items: center; /* 水平居中 */
-  justify-content: center; /* 垂直居中 */
+.app-container {
+  width: 100vw;
+  height: 100vh;
 }
 </style>
