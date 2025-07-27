@@ -53,6 +53,8 @@ onMounted(() => {
   // 通过 IPC 向主进程请求文件夹内容
   window.electron.ipcRenderer.send('get-folder-content', folderPath)
   window.electron.ipcRenderer.once('received-folder-content', (_, data) => {
+    console.log('ipc:', _)
+    console.log(data)
     if (data.error) {
       error.value = data.error
     } else {

@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87cedbf9-78f1-4ba3-b479-8b343fdc22c5" name="Changes" comment="Version: 0.0.1&#10;增加路由跳转和按钮消失&#10;增加.idea文件夹的忽略">
+    <list default="true" id="87cedbf9-78f1-4ba3-b479-8b343fdc22c5" name="Changes" comment="Version: 0.0.1&#10;调整代码，增加目标文件夹的读取代码">
+      <change afterPath="$PROJECT_DIR$/src/main/ipcHandlers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/windowManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/assets/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/assets/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/home/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/home/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,29 +41,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/work/gitee/tsStudy",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build:win.executor": "Run",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "D:\\work\\gitee\\tukuok\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\work\\gitee\\tukuok\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/work/gitee/tukuok&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build:win.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Debug&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\work\\gitee\\tukuok\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\work\\gitee\\tukuok\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\work\gitee\tukuok\src\renderer\src\components\myInfo" />
@@ -207,7 +205,25 @@
       <workItem from="1751871937345" duration="2447000" />
       <workItem from="1751898264082" duration="1605000" />
       <workItem from="1751940785269" duration="1540000" />
-      <workItem from="1751982522216" duration="2392000" />
+      <workItem from="1751982522216" duration="2888000" />
+      <workItem from="1752022619091" duration="9673000" />
+      <workItem from="1752073700799" duration="2331000" />
+      <workItem from="1752109867262" duration="2832000" />
+      <workItem from="1752158063731" duration="1972000" />
+      <workItem from="1752201402721" duration="1484000" />
+      <workItem from="1752240044924" duration="664000" />
+      <workItem from="1752329801749" duration="27000" />
+      <workItem from="1752332621167" duration="611000" />
+      <workItem from="1752456131328" duration="1191000" />
+      <workItem from="1752542151060" duration="678000" />
+      <workItem from="1752648435568" duration="941000" />
+      <workItem from="1752666693933" duration="3080000" />
+      <workItem from="1752716151154" duration="3650000" />
+      <workItem from="1752800835520" duration="2913000" />
+      <workItem from="1753369181634" duration="1520000" />
+      <workItem from="1753407548536" duration="606000" />
+      <workItem from="1753455616426" duration="600000" />
+      <workItem from="1753620411240" duration="1221000" />
     </task>
     <task id="LOCAL-00001" summary="初始化项目">
       <created>1738839690514</created>
@@ -275,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748275488317</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Version: 0.0.1&#10;调整代码，增加目标文件夹的读取代码">
+      <option name="closed" value="true" />
+      <created>1751990227758</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1751990227758</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,6 +322,7 @@
     <MESSAGE value="调整项目结构，重构项目" />
     <MESSAGE value="Version: 0.0.1&#10;开发入口选择文件夹功能&#10;调整部分代码和Readme" />
     <MESSAGE value="Version: 0.0.1&#10;增加路由跳转和按钮消失&#10;增加.idea文件夹的忽略" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version: 0.0.1&#10;增加路由跳转和按钮消失&#10;增加.idea文件夹的忽略" />
+    <MESSAGE value="Version: 0.0.1&#10;调整代码，增加目标文件夹的读取代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version: 0.0.1&#10;调整代码，增加目标文件夹的读取代码" />
   </component>
 </project>
