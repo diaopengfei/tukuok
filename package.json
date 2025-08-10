@@ -25,6 +25,7 @@
     "@electron-toolkit/utils": "^4.0.0",
     "electron-updater": "^6.3.9",
     "element-plus": "^2.9.7",
+    "sharp": "^0.34.3",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
