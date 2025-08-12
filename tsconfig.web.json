@@ -8,7 +8,7 @@
   ],
   "compilerOptions": {
     "composite": true,
-    "baseUrl": "./my-app",
+    "baseUrl": ".",
     "paths": {
       "@renderer/*": [
         "src/renderer/src/*"
