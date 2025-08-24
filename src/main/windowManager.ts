@@ -11,7 +11,11 @@ const WINDOW_CONFIG = {
   autoHideMenuBar: true,
   webPreferences: {
     preload: join(__dirname, '../preload/index.js'),
-    sandbox: false
+    sandbox: false,
+
+    webSecurity: false,  // 开发环境临时关闭web安全策略
+    allowRunningInsecureContent: true,
+    allowFileAccess: true
   }
 }
 

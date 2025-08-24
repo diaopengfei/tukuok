@@ -24,13 +24,15 @@
         </div>
       </div>
 
-      <!-- 图片列表 -->
+      <!-- 图片列表 - 改为卡片形式 -->
       <div v-if="images.length" class="section">
         <h2>图片文件</h2>
-        <div class="list image-list">
-          <div v-for="image in images" :key="image.path" class="image-item">
-            <img :src="getImageUrl(image.thumbnailPath || image.path)" :alt="image.name" @error="handleImageError" />
-            <p>{{ image.name }}</p>
+        <div class="folder-grid">
+          <div v-for="image in images" :key="image.path" class="image-card">
+            <div class="image-preview">
+              <img :src="getImageUrl(image.thumbnailPath || image.path)" :alt="image.name" @error="handleImageError" loading="lazy" />
+            </div>
+            <div class="image-name">{{ image.name }}</div>
           </div>
         </div>
       </div>
@@ -42,6 +44,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import type { FolderItem, ImageItem } from '@renderer/types'
+// 删除 Node.js path 模块导入，渲染进程不直接支持
 
 const route = useRoute()
 const folderPath = route.query.folderPath as string
@@ -56,19 +59,48 @@ const showProgress = ref<boolean>(false)
 // 清理函数
 let removeThumbnailProgressListener: (() => void) | null = null
 
+// 重构getImageUrl方法
 const getImageUrl = (imagePath?: string): string => {
   if (!imagePath) {
     return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2NjYiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='
   }
 
-  const normalizedPath = imagePath.replace(/\\/g, '/').replace(/^\/+/, '')
-  return `file:///${normalizedPath}`
+  try {
+    // 解码URL编码的路径
+    const decodedPath = decodeURIComponent(imagePath)
+    // 标准化路径，处理重复斜杠问题
+    const normalizedPath = decodedPath
+      .replace(/\\/g, '/')        // 将反斜杠替换为正斜杠
+      .replace(/([a-zA-Z]:)\/+/, '$1/')  // 修复盘符后的重复斜杠 (如 E:/// → E:/)
+
+    // 确保正确的file协议格式
+    return normalizedPath.startsWith('file://')
+      ? normalizedPath
+      : `file:///${normalizedPath}` // 移除多余的前导斜杠
+  } catch (error) {
+    console.error('路径处理错误:', error)
+    return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvcGluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2NjYiPkVycm9yPC90ZXh0Pjwvc3ZnPg=='
+  }
 }
 
 const handleImageError = (e: Event): void => {
   const target = e.target as HTMLImageElement
-  console.error('图片加载失败:', target.src)
+  const originalSrc = target.src
+  console.error('图片加载失败:', originalSrc)
+
+  // 尝试使用备用路径：如果原路径是缩略图，尝试加载原图
+  if (originalSrc.includes('_thumb')) {
+    const originalImageSrc = originalSrc.replace('_thumb.jpg', '')
+    console.log('尝试加载原图:', originalImageSrc)
+    target.src = originalImageSrc
+    return
+  }
+
+  // 最终使用错误占位图
   target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2NjYiPkVycm9yPC90ZXh0Pjwvc3ZnPg=='
+
+  // 添加错误提示到UI
+  error.value = `图片加载失败: ${originalSrc.split('/').pop()}`
 }
 
 onMounted(() => {
@@ -84,7 +116,7 @@ onMounted(() => {
   }
 
   window.electron.ipcRenderer.on('thumbnail-progress', thumbnailProgressListener)
-  removeThumbnailProgressListener = () => {
+  removeThumbnailProgressListener = (): void => {
     window.electron.ipcRenderer.removeListener('thumbnail-progress', thumbnailProgressListener)
   }
 
@@ -95,6 +127,13 @@ onMounted(() => {
     } else {
       folders.value = data.folders || []
       images.value = data.images || []
+
+      // 添加调试日志
+      console.log('接收到的图片数据:', images.value)
+      if (images.value.length > 0) {
+        console.log('第一张图片缩略图路径:', images.value[0].thumbnailPath)
+        console.log('第一张图片URL:', getImageUrl(images.value[0].thumbnailPath))
+      }
     }
     showProgress.value = false
     progress.value = 0
@@ -107,7 +146,6 @@ onUnmounted(() => {
   }
 })
 </script>
-
 
 <style scoped>
 .home-header {
@@ -153,23 +191,54 @@ onUnmounted(() => {
   text-align: center;
   word-break: break-all;
 }
-.list {
-  display: grid;
-  gap: 10px;
-  padding: 10px;
+
+/* 图片卡片样式 */
+.image-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 10px;
+  border-radius: 8px;
+  background-color: #f5f7fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  aspect-ratio: 1;
 }
-.image-list {
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+.image-card:hover {
+  background-color: #e9eef5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-.image-item {
-  text-align: center;
-}
-.image-item img {
+.image-preview {
   width: 100%;
-  height: 120px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #e4e7ed;
+}
+.image-preview img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 4px;
 }
+.image-name {
+  font-size: 12px;
+  text-align: center;
+  word-break: break-all;
+  color: #606266;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .error {
   color: #ff4d4f;
   padding: 10px;

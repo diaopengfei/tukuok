@@ -95,10 +95,12 @@ export function registerIpcHandlers(): void {
         const progress = Math.round((processedCount / Math.max(totalImages, 1)) * 100)
         event.sender.send('thumbnail-progress', progress)
 
+        // 在添加图片信息时使用绝对路径
         images.push({
           name: entry.name,
           path: fullPath,
-          thumbnailPath
+          // 使用resolve获取绝对路径
+          thumbnailPath: path.resolve(thumbnailPath)
         })
       }
 
