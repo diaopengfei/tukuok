@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87cedbf9-78f1-4ba3-b479-8b343fdc22c5" name="Changes" comment="Version: 0.0.1&#10;修复缩略图无法正常展示的问题">
+    <list default="true" id="87cedbf9-78f1-4ba3-b479-8b343fdc22c5" name="Changes" comment="Version: 0.0.1&#10;修改Readme文件">
+      <change afterPath="$PROJECT_DIR$/src/main/ipc/home.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/ipc/testHome.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ipcHandlers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ipcHandlers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/home/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/home/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +52,9 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.build:win.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Debug&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\work\\gitee\\tukuok\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Console&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\work\\gitee\\tukuok\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -243,7 +246,18 @@
       <workItem from="1755911671646" duration="2433000" />
       <workItem from="1756000731993" duration="3406000" />
       <workItem from="1756084694859" duration="948000" />
-      <workItem from="1756192212244" duration="533000" />
+      <workItem from="1756192212244" duration="4872000" />
+      <workItem from="1756343886347" duration="1214000" />
+      <workItem from="1756429334093" duration="1564000" />
+      <workItem from="1756554040823" duration="4721000" />
+      <workItem from="1756642954356" duration="3977000" />
+      <workItem from="1756690845742" duration="3964000" />
+      <workItem from="1756861332901" duration="1236000" />
+      <workItem from="1756907751883" duration="818000" />
+      <workItem from="1756987077197" duration="2625000" />
+      <workItem from="1757077856123" duration="1819000" />
+      <workItem from="1757133019880" duration="8199000" />
+      <workItem from="1757235163606" duration="8390000" />
     </task>
     <task id="LOCAL-00001" summary="初始化项目">
       <created>1738839690514</created>
@@ -351,7 +365,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756043391966</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Version: 0.0.1&#10;增加readme.md文件">
+      <option name="closed" value="true" />
+      <created>1756197778590</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1756197778590</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Version: 0.0.1&#10;修改Readme文件">
+      <option name="closed" value="true" />
+      <created>1756460594436</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1756460594436</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,6 +409,8 @@
     <MESSAGE value="Version: 0.0.1&#10;重构代码" />
     <MESSAGE value="Version: 0.0.1&#10;重构代码，优化文件夹展示部分&#10;优化缩略图生成逻辑" />
     <MESSAGE value="Version: 0.0.1&#10;修复缩略图无法正常展示的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version: 0.0.1&#10;修复缩略图无法正常展示的问题" />
+    <MESSAGE value="Version: 0.0.1&#10;增加readme.md文件" />
+    <MESSAGE value="Version: 0.0.1&#10;修改Readme文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version: 0.0.1&#10;修改Readme文件" />
   </component>
 </project>

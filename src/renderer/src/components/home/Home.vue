@@ -55,6 +55,8 @@ const images = ref<ImageItem[]>([])
 const error = ref<string>('')
 const progress = ref<number>(0)
 const showProgress = ref<boolean>(false)
+const ERROR_IMAGE_BASE64: string =
+  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2NjYiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='
 
 // 清理函数
 let removeThumbnailProgressListener: (() => void) | null = null
@@ -62,7 +64,7 @@ let removeThumbnailProgressListener: (() => void) | null = null
 // 重构getImageUrl方法
 const getImageUrl = (imagePath?: string): string => {
   if (!imagePath) {
-    return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2NjYiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='
+    return ERROR_IMAGE_BASE64
   }
 
   try {
@@ -79,7 +81,7 @@ const getImageUrl = (imagePath?: string): string => {
       : `file:///${normalizedPath}` // 移除多余的前导斜杠
   } catch (error) {
     console.error('路径处理错误:', error)
-    return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvcGluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2NjYiPkVycm9yPC90ZXh0Pjwvc3ZnPg=='
+    return ERROR_IMAGE_BASE64
   }
 }
 
@@ -97,7 +99,7 @@ const handleImageError = (e: Event): void => {
   }
 
   // 最终使用错误占位图
-  target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2NjYiPkVycm9yPC90ZXh0Pjwvc3ZnPg=='
+  target.src = ERROR_IMAGE_BASE64
 
   // 添加错误提示到UI
   error.value = `图片加载失败: ${originalSrc.split('/').pop()}`
@@ -149,9 +151,11 @@ onUnmounted(() => {
 
 <style scoped>
 .home-header {
-  background-color: #409eff;
-  color: #fff;
+  background-color: white;
+  color: black;
   line-height: 60px;
+  border: gray 1px solid;
+  box-shadow: gray 0.5px 0.5px;
 }
 .progress-section {
   margin: 20px 0;
